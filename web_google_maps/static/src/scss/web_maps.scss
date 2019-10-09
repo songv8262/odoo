@@ -1,0 +1,280 @@
+/* https://github.com/twbs/bootstrap/issues/4160 */
+/* put google places autocomplete dropdown results above the bootstrap modal 1050 zindex. */
+.pac-container {
+    z-index: 1051 !important;
+}
+
+.o_field_x2many_map {
+    margin-top: 10px;
+}
+
+.o_map_container {
+    display: flex;
+    align-content: stretch;
+    overflow-x: visible;
+    min-height: 450px;
+    height: 100%;
+
+    .o_map_view {
+        width: 100%;	
+		.o_map_window{
+			.o_kanban_record{
+				display: flex;
+				.o_kanban_image{
+					align-self: center;
+					width: 64px;
+					height: 64px;
+					border: #ddd solid 1px;
+				}
+				.oe_kanban_details{
+					align-self: center;
+					flex: 1;
+					padding-left: 5px;
+					padding-right: 5px;
+					ul{
+						padding: 0;
+						li{
+							list-style: none;
+						}
+					}
+				}
+			}
+		}
+    }
+
+    .o_map_left_sidenav {
+        left: 0;
+        top: 0;
+        bottom: 0;
+        max-width: 400px;
+        width: 400px;
+        position: absolute;
+        z-index: 1;
+        background-color: #f5f5f5;
+        overflow-x: hidden;
+        transition: 0.5s;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+
+        &.closed {
+            transform: translate3d(-100%, 0, 0);
+            -webkit-transform: translate3d(-100%, 0, 0);
+
+            .sidenav-body .panel {
+                border: none;
+            }
+        }
+    }
+
+    .o_map_right_sidebar {
+        right: 0;
+        bottom: 0;
+        background-color: #7C7BAD;
+
+        &.closed {
+            width: 0;
+            transition: 0.5s;
+            transform: translateX(-100%);
+            -webkit-transform: translateX(-100%);
+        }
+
+        &.open {
+            width: 250px;
+            transition: 0.5s;
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+            overflow-x: auto;
+        }
+		span{
+			color: white;
+		}
+        ul {
+            margin-top: 10px;
+            padding-left: 3px;
+            list-style: none;
+            font-size: 12px;
+
+            li {
+                padding-bottom: 8px;
+
+                span {
+                    padding: 3px 6px;
+
+                    &.total {
+                        font-size: 10px;
+                        background: #ddd;
+                        border-radius: 3px;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .o_map_button {
+        cursor: pointer;
+        text-align: center;
+        width: auto;
+        padding: 0px 6px;
+        margin: 0px 15px 5px 0px;
+        background-color: #ffffff;
+        border-radius: 2px;
+        line-height: 25px;
+        font-family: 'Roboto,Arial,sans-serif';
+    }
+
+}
+
+//天气预报
+.o_kanban_map_silder_weather{	
+	position: relative;
+	#weatheronoff{
+		position: absolute;
+		right: 0px;
+		margin-top: 60px;
+		width: 20px;
+		height: 20px;
+		border-radius: 3px;
+		background-color:#8EA8E0;
+		text-align: center;
+		line-height: 20px;
+		cursor: pointer;
+		transition: margin-top 0.5s ease-out;
+	}
+	#weatherdiv{
+		position: absolute;
+		right: 20px;
+		width: 80px;
+		height: 80px;
+		border-radius: 3px;
+		background-color:#8EA8E0;
+		transition: height 0.5s ease-out,width 0.25s ease-out;	
+		overflow: hidden;
+		div{
+			width: 80px;
+			height: 80px;
+			p{	
+				font-size: 12px;
+				color: #ffffff;
+				height: 20%;
+				text-align: center;
+				margin: 0;
+				padding-left: 5px;
+				cursor: default;
+			}
+			@keyframes masked-animation {
+				0% {
+					background-position: 0 0;
+						}
+				100% {
+					background-position: -100% 0;
+				}
+			}
+		}
+	}
+}
+
+
+//开关示意图
+.o_kanban_map_onoff{
+	background-color:#8EA8E0;
+	display: flex !important;
+	left: 50% !important;
+	margin-left: -50px;
+	width: 100px;
+	height: 40px;
+	border-radius: 10px;
+	color: white;
+	icon{
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		span{
+			font-size: 12px;
+		}
+		img{
+			width: 20px;
+			height: 25px;
+		}
+	}
+}
+
+//列表
+	.o_kanban_map_form{	
+		width: 300px;
+		height: 125px;
+		display:flex !important;
+		flex-direction: column;
+		align-items: center;
+		.o_kanban_map_form_div,.o_kanban_map_form_ul>ul>li{
+			display: flex;
+			width: 100%;
+			span{
+				line-height: 25px;
+			}
+			span:nth-child(1){
+				width: 40px;
+			}
+			span:nth-child(2){
+				width: 60px;
+			}
+			span:nth-child(3){
+				flex: 1;
+			}
+		}
+		.o_kanban_map_form_div{
+			background-color: #7C7BAD;
+			z-index: 10;
+			color: #ffffff;
+			flex: 1;
+			span{
+				text-align: center;
+			}
+		}
+		.o_kanban_map_form_ul{
+			background-color: rgba(255,255,255,0.5);
+			overflow: hidden;
+			width: 100%;	
+			flex: 4;
+			ul{			
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				li{
+					height: 25%;
+					border-bottom: 1px solid #7C7BAD;
+					span:nth-child(1){
+						text-align: center;
+					}
+					span:nth-child(2){
+						text-align: center;
+					}
+					span:nth-child(3){
+						padding-left: 50px;
+					}
+				}
+				li:last-child{
+					border-bottom:none;
+				}
+				animation:anis 20s linear infinite;
+			}
+		}
+		@keyframes anis {
+			100% {
+				transform:translateY(-100%);
+			}
+		}
+		.o_kanban_map_form_ul>ul:hover {
+			animation-play-state:paused;
+			background-color: rgba(255,255,255,1);
+		}
+	}
+
+.anchorBL{
+	display:none;
+	}
+	
+	
